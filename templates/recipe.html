@@ -6,14 +6,14 @@
     <title>Recipe Book</title>
 </head>
 <body>
-    <h1><a href = '/recipes/list'>Recipe Book</a></h1>
+    <h1><a href="/recipes/list">Recipe Book</a></h1>
     <h2>{{ name }}</h2>
-    <h6>
+    <h3>
         <ul>
             {% for ingredient in ingredients %}
-            <li>{{ ingredient.quantity }} {{ingredient.name}}</li>
+            <li>name: {{ ingredient.name }}, quantity: {{ ingredient.quantity }}</li>
             {% endfor %}
         </ul>
-    </h6>
+    </h3>
 </body>
 </html>
