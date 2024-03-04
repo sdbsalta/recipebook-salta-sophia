@@ -1,12 +1,11 @@
-#recipebook/ledger/urls.py
+# ledger/urls.py
 
 from django.urls import path
-from .views import recipes, recipe1, recipe2
+from .views import RecipeDetailView, RecipeListView
 
 urlpatterns = [
-    path('recipes/list', recipes, name='recipes'),
-    path('recipe/1', recipe1, name='recipe 1'),
-    path('recipe/2', recipe2, name='recipe 2'),
+    path('list/', RecipeListView.as_view(), name='list'),
+    path('list/<int:pk>/detail/', RecipeDetailView.as_view(), name='recipe-detail'),
 ]
 
 app_name = 'ledger'
