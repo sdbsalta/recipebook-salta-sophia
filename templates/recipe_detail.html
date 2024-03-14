@@ -1,41 +1,14 @@
-<!-- template/recipe_detail.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Book</title>
-</head>
-<body>
-
-    <h1><a href="{% url 'ledger:list' %}">Recipe Book</a></h1>
-    {% if user.is_authenticated %}
-        <form action="{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-
-    {% if user.is_authenticated %}
-        <h1>{{ recipe.title }}</h1>
-        <p>Author: {{ recipe.author.username }}</p>
-    {% else %}
-        <p>Please log in to view this page.</p>
-    {% endif %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ recipe.name }}
+{% endblock title %}
+{% block content %}
     <h2>{{ recipe.name }}</h2>
-    <h3>
-        <ul>
-            {% for ingredient in recipe.ingredients.all %}
-                <li>Name: {{ ingredient.ingredient.name }}, Quantity: {{ ingredient.quantity }}</li>
-            {% endfor %}
-        </ul>
-    </h3>
-
-</body>
-</html>
-
-
-</body>
-</html>
+    <h3>by {{ recipe.author }}</h3>
+    <ul>
+        {% for ingredient in recipe.ingredients.all %}
+            <li>{{ ingredient.quantity }} {{ ingredient.ingredient.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
