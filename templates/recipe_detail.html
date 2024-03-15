@@ -8,7 +8,7 @@
     <h3>by {{ recipe.author }}</h3>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
-            <li>{{ ingredient.quantity }} {{ ingredient.ingredient.name }}</li>
+            <li>{{ ingredient.quantity }} - {{ ingredient.ingredient.name }}</li>
         {% endfor %}
     </ul>
 {% endblock content %}
